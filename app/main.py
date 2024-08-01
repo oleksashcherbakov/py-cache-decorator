@@ -5,7 +5,7 @@ def cache(func: Callable) -> Callable:
     collected_data = {}
 
     def inner(*args, **kwargs) -> Any:
-        elem = (args, func.__name__)
+        elem = (args, tuple(kwargs.keys()), func.__name__)
 
         if elem in collected_data:
             print("Getting from cache")
